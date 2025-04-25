@@ -1,11 +1,24 @@
 import { motion } from "framer-motion";
+import heroBackground from "../assets/hero-bg.jpg";
+import jorgeImage from "../assets/jorge.png";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-primary text-secondary px-6 pt-24 pb-20">
-      <div className="container mx-auto max-w-7xl">
+    <section 
+      className="min-h-screen flex items-center justify-center text-secondary px-6 pt-24 pb-20 relative"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${heroBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay to ensure text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50 z-0"></div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-2/3 space-y-8 md:pr-12">
+          <div className="w-full md:w-3/5 space-y-8 md:pr-12">
             <motion.h1 
               className="text-5xl md:text-7xl font-bold font-sf-pro-display leading-tight"
               initial={{ opacity: 0, y: 20 }}
@@ -17,7 +30,7 @@ const HeroSection = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl font-sf-pro-text mb-8 max-w-2xl text-secondary/80"
+              className="text-xl md:text-2xl font-sf-pro-text mb-8 max-w-2xl text-secondary/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -43,24 +56,19 @@ const HeroSection = () => {
           </div>
           
           <motion.div 
-            className="w-full md:w-1/3 mt-12 md:mt-0 flex justify-center"
+            className="w-full md:w-2/5 mt-12 md:mt-0 flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <div className="relative">
-              <div className="w-72 h-72 rounded-full bg-accent/20 absolute -top-4 -left-4"></div>
-              <div className="w-72 h-72 rounded-full overflow-hidden relative z-10 border-4 border-secondary/20">
-                <svg 
-                  className="w-full h-full text-white"
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect width="200" height="200" fill="#111" />
-                  <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="16px">
-                    Jorge Iraheta
-                  </text>
-                </svg>
+              <div className="w-72 h-72 md:w-80 md:h-80 rounded-full bg-accent/20 absolute -top-4 -left-4"></div>
+              <div className="w-72 h-72 md:w-80 md:h-80 relative z-10">
+                <img 
+                  src={jorgeImage} 
+                  alt="Jorge Iraheta" 
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
           </motion.div>
