@@ -45,8 +45,22 @@ const AboutSection = () => {
                   viewBox="0 0 200 200"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <rect width="200" height="200" fill="#eee" />
-                  <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#111" fontSize="16px">
+                  <defs>
+                    <linearGradient id="aboutBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#f5f5f7" />
+                      <stop offset="100%" stopColor="#e5e5e7" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="200" height="200" fill="url(#aboutBgGradient)" />
+                  
+                  {/* Professional avatar icon */}
+                  <g transform="translate(50, 45) scale(0.5)">
+                    <circle cx="100" cy="70" r="40" fill="#333" />
+                    <path d="M100 150 Q 60 120 60 80 A 40 40 0 0 1 140 80 Q 140 120 100 150 Z" fill="#333" />
+                    <path d="M160 170 Q 130 120 100 150 Q 70 120 40 170 Q 70 190 100 190 Q 130 190 160 170 Z" fill="#333" />
+                  </g>
+                  
+                  <text x="50%" y="160" dominantBaseline="middle" textAnchor="middle" fill="#111" fontSize="14px" fontFamily="SF Pro Display, sans-serif">
                     Jorge Iraheta
                   </text>
                 </svg>

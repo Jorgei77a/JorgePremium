@@ -67,15 +67,27 @@ const NewsletterSection = () => {
             
             <div className="space-y-4 mt-8">
               <div className="flex items-start">
-                <div className="text-accent text-xl mr-3">✅</div>
+                <div className="text-accent mr-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
                 <p>"5 Easy Wins with AI" Free PDF</p>
               </div>
               <div className="flex items-start">
-                <div className="text-accent text-xl mr-3">✅</div>
+                <div className="text-accent mr-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
                 <p>Weekly practical tips</p>
               </div>
               <div className="flex items-start">
-                <div className="text-accent text-xl mr-3">✅</div>
+                <div className="text-accent mr-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
                 <p>No fluff, no overwhelm</p>
               </div>
             </div>
