@@ -108,9 +108,9 @@ const Header = () => {
         >
           <a 
             href="#" 
-            className={`text-xl font-bold font-sf-pro-display ${textColorClass} hover:text-glow z-[60]`}
+            className={`text-xl font-bold font-sf-pro-display ${textColorClass} hover:text-glow z-[60] ${isOpen ? 'text-primary' : ''}`}
             style={{ 
-              textShadow: isHeroSection && !scrolled ? "0 0 10px rgba(255, 50, 50, 0.5)" : "" 
+              textShadow: isHeroSection && !scrolled && !isOpen ? "0 0 10px rgba(255, 50, 50, 0.5)" : "" 
             }}
           >
             Jorge Iraheta
@@ -148,14 +148,14 @@ const Header = () => {
         
         {/* Mobile Menu Button */}
         <motion.button 
-          className={`md:hidden focus:outline-none ${textColorClass} z-[60] relative`}
+          className={`md:hidden focus:outline-none ${isOpen ? 'text-primary' : textColorClass} z-[60] relative`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
           {isOpen ? (
-            <X className="w-6 h-6 text-primary" />
+            <X className="w-6 h-6" />
           ) : (
             <Menu className="w-6 h-6" />
           )}
@@ -173,21 +173,22 @@ const Header = () => {
             variants={menuVariants}
           >
             <div className="container mx-auto px-6 h-full flex flex-col justify-center">
-              <div className="space-y-8">
+              <div className="space-y-8 flex flex-col items-center">
                 {["about", "courses", "testimonials", "newsletter"].map((section) => (
                   <motion.div
                     key={section}
                     variants={itemVariants}
-                    className="overflow-hidden"
+                    className="overflow-hidden w-full text-center"
                   >
                     <motion.button 
                       onClick={() => scrollToSection(section)} 
-                      className="py-4 font-sf-pro-display text-primary text-3xl font-semibold tracking-tight w-full text-left"
+                      className="py-4 font-sf-pro-display text-primary text-3xl font-semibold tracking-tight w-full text-center"
                       whileHover={{ 
-                        x: 10, 
+                        scale: 1.05, 
                         color: "#007AFF",
                         transition: { duration: 0.2 }
                       }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       {section.charAt(0).toUpperCase() + section.slice(1)}
                     </motion.button>
@@ -196,7 +197,7 @@ const Header = () => {
                 
                 <motion.div 
                   variants={itemVariants}
-                  className="mt-8"
+                  className="mt-8 w-full md:w-3/4 mx-auto"
                 >
                   <motion.button 
                     onClick={() => scrollToSection("newsletter")} 
@@ -215,9 +216,9 @@ const Header = () => {
               
               <motion.div 
                 variants={itemVariants}
-                className="mt-auto mb-12"
+                className="mt-auto mb-8"
               >
-                <div className="border-t border-gray-100 pt-8 mt-12">
+                <div className="border-t border-gray-100 pt-8 mt-12 text-center">
                   <p className="text-gray-400 text-sm font-sf-pro-text">
                     © {new Date().getFullYear()} Jorge Iraheta. All rights reserved.
                   </p>
