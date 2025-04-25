@@ -56,18 +56,17 @@ const HeroSection = () => {
           </div>
           
           <motion.div 
-            className="w-full md:w-2/5 mt-12 md:mt-0 flex justify-center"
+            className="w-full md:w-2/5 mt-12 md:mt-0 flex justify-center items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <div className="relative">
-              <div className="w-72 h-72 md:w-80 md:h-80 rounded-full bg-accent/20 absolute -top-4 -left-4"></div>
-              <div className="w-72 h-72 md:w-80 md:h-80 relative z-10">
+              <div className="w-full md:w-[500px] md:h-[500px] relative z-10">
                 <img 
                   src={jorgeImage} 
                   alt="Jorge Iraheta" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain scale-125"
                 />
               </div>
             </div>
