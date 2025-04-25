@@ -4,21 +4,37 @@ import jorgeImage from "../assets/jorge.png";
 
 const HeroSection = () => {
   return (
-    <section 
-      className="min-h-screen flex items-center justify-center text-secondary px-6 pt-24 pb-20 relative"
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${heroBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50 z-0"></div>
+    <section className="min-h-screen flex items-center justify-center text-secondary relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      ></div>
       
-      <div className="container mx-auto max-w-7xl relative z-10">
+      {/* Your photo as a fixed, responsive background element */}
+      <div className="absolute top-0 right-0 bottom-0 w-full md:w-1/2 z-0 overflow-hidden">
+        <img 
+          src={jorgeImage} 
+          alt="Jorge Iraheta"
+          className="absolute right-0 h-full object-contain object-right max-w-none"
+          style={{ 
+            maxHeight: '100vh'
+          }}
+        />
+      </div>
+      
+      {/* Gradient overlay for better text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent z-10"></div>
+      
+      {/* Content */}
+      <div className="container mx-auto max-w-7xl px-6 pt-24 pb-20 relative z-20">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-3/5 space-y-8 md:pr-12">
+          <div className="w-full md:w-3/5 space-y-8">
             <motion.h1 
               className="text-5xl md:text-7xl font-bold font-sf-pro-display leading-tight"
               initial={{ opacity: 0, y: 20 }}
@@ -55,22 +71,8 @@ const HeroSection = () => {
             </motion.div>
           </div>
           
-          <motion.div 
-            className="w-full md:w-2/5 mt-12 md:mt-0 flex justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="relative">
-              <div className="w-full md:w-[500px] md:h-[500px] relative z-10">
-                <img 
-                  src={jorgeImage} 
-                  alt="Jorge Iraheta" 
-                  className="w-full h-full object-contain scale-125"
-                />
-              </div>
-            </div>
-          </motion.div>
+          {/* Placeholder div to maintain layout structure */}
+          <div className="w-full md:w-2/5"></div>
         </div>
       </div>
     </section>
