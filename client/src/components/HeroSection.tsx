@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
+import jorgeBgPath from "@assets/jorgebg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-primary text-secondary px-6 pt-24 pb-20">
+    <section 
+      className="min-h-screen flex items-center justify-end bg-cover bg-center text-secondary px-6 pt-24 pb-20"
+      style={{ backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url(${jorgeBgPath})` }}
+    >
       <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="w-full md:w-2/3 space-y-8 md:pr-12">
+        <div className="flex justify-end">
+          <div className="w-full md:w-3/5 lg:w-1/2 space-y-8">
             <motion.h1 
               className="text-5xl md:text-7xl font-bold font-sf-pro-display leading-tight"
               initial={{ opacity: 0, y: 20 }}
@@ -17,7 +21,7 @@ const HeroSection = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl font-sf-pro-text mb-8 max-w-2xl text-secondary/80"
+              className="text-xl md:text-2xl font-sf-pro-text mb-8 max-w-2xl text-secondary/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -41,29 +45,6 @@ const HeroSection = () => {
               </a>
             </motion.div>
           </div>
-          
-          <motion.div 
-            className="w-full md:w-1/3 mt-12 md:mt-0 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="relative">
-              <div className="w-72 h-72 rounded-full bg-accent/20 absolute -top-4 -left-4"></div>
-              <div className="w-72 h-72 rounded-full overflow-hidden relative z-10 border-4 border-secondary/20">
-                <svg 
-                  className="w-full h-full text-white"
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect width="200" height="200" fill="#111" />
-                  <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="16px">
-                    Jorge Iraheta
-                  </text>
-                </svg>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
