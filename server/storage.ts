@@ -58,9 +58,12 @@ export class MemStorage implements IStorage {
     const id = this.subscriberCurrentId++;
     const currentTimestamp = new Date().toISOString();
     
+    // Create subscriber with the correct type structure
     const subscriber: Subscriber = {
-      ...insertSubscriber,
       id,
+      name: insertSubscriber.name,
+      email: insertSubscriber.email,
+      ministry: insertSubscriber.ministry ?? null, // Convert undefined to null
       createdAt: currentTimestamp
     };
     
