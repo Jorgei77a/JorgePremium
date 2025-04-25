@@ -205,13 +205,4 @@ html {
     transform: translateY(-2px);
     text-shadow: 0 0 15px rgba(255, 50, 50, 0.7);
   }
-  
-  .button-glow {
-    transition: all 0.3s ease;
-  }
-  
-  .button-glow:hover {
-    box-shadow: 0 0 20px rgba(255, 50, 50, 0.6);
-    transform: translateY(-2px) scale(1.02);
-  }
 }
