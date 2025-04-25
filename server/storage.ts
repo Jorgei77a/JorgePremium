@@ -1,4 +1,4 @@
-import { users, subscribers, type User, type InsertUser, type Subscriber, type InsertSubscriber } from "@shared/schema";
+import { users, type User, type InsertUser } from "@shared/schema";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -7,20 +7,15 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  createSubscriber(subscriber: InsertSubscriber): Promise<Subscriber>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
-  private subscribers: Map<number, Subscriber>;
-  currentUserId: number;
-  currentSubscriberId: number;
+  currentId: number;
 
   constructor() {
     this.users = new Map();
-    this.subscribers = new Map();
-    this.currentUserId = 1;
-    this.currentSubscriberId = 1;
+    this.currentId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -34,20 +29,10 @@ export class MemStorage implements IStorage {
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
+    const id = this.currentId++;
     const user: User = { ...insertUser, id };
     this.users.set(id, user);
     return user;
-  }
-
-  async createSubscriber(insertSubscriber: InsertSubscriber): Promise<Subscriber> {
-    const id = this.currentSubscriberId++;
-    const createdAt = new Date().toISOString();
-    // Ensure ministry is null if undefined to match the Subscriber type
-    const ministry = insertSubscriber.ministry === undefined ? null : insertSubscriber.ministry;
-    const subscriber: Subscriber = { ...insertSubscriber, id, createdAt, ministry };
-    this.subscribers.set(id, subscriber);
-    return subscriber;
   }
 }
 
