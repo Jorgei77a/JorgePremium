@@ -57,8 +57,11 @@ const Header = () => {
       ? "bg-transparent" 
       : "bg-primary/90 backdrop-blur-md";
 
-  // Determine text color based on section
-  const textColorClass = isHeroSection && !scrolled ? "text-white" : "";
+  // Determine text color based on section and scroll position
+  const textColorClass = isHeroSection && !scrolled ? "text-white" : "text-primary";
+  
+  // Determine if we need to use a light background text color
+  const isLightBackground = scrolled || !isHeroSection;
 
   // Mobile menu animation variants
   const menuVariants = {
@@ -110,7 +113,11 @@ const Header = () => {
             href="#" 
             className={`text-xl font-bold font-sf-pro-display ${textColorClass} hover:text-glow z-[60] ${isOpen ? 'text-primary' : ''}`}
             style={{ 
-              textShadow: isHeroSection && !scrolled && !isOpen ? "0 0 10px rgba(255, 50, 50, 0.5)" : "" 
+              textShadow: isHeroSection && !scrolled && !isOpen 
+                ? "0 0 10px rgba(255, 50, 50, 0.5)" 
+                : isLightBackground && !isOpen 
+                  ? "0 0 1px rgba(0, 0, 0, 0.3)" 
+                  : "0 0 1px rgba(255, 255, 255, 0.3)"
             }}
           >
             Jorge Iraheta
@@ -123,7 +130,10 @@ const Header = () => {
             <motion.button 
               key={section}
               onClick={() => scrollToSection(section)} 
-              className={`font-sf-pro-display transition-colors ${textColorClass}`}
+              className={`font-sf-pro-display transition-colors ${textColorClass} font-medium`}
+              style={{
+                textShadow: isLightBackground ? "0 0 1px rgba(0, 0, 0, 0.1)" : "0 0 1px rgba(255, 255, 255, 0.2)"
+              }}
               whileHover={{ 
                 scale: 1.05, 
                 textShadow: "0 0 10px rgba(255, 50, 50, 0.7)", 
@@ -149,6 +159,9 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <motion.button 
           className={`md:hidden focus:outline-none ${isOpen ? 'text-primary' : textColorClass} z-[60] relative`}
+          style={{
+            filter: isLightBackground && !isOpen ? "drop-shadow(0 0 1px rgba(0, 0, 0, 0.3))" : ""
+          }}
           onClick={toggleMenu}
           aria-label="Toggle menu"
           whileHover={{ scale: 1.1 }}
