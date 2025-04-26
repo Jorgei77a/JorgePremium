@@ -6,7 +6,6 @@ import { z } from "zod";
 const newsletterSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  ministry: z.string().optional(),
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {

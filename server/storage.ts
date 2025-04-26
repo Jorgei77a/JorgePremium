@@ -63,7 +63,7 @@ export class MemStorage implements IStorage {
       id,
       name: insertSubscriber.name,
       email: insertSubscriber.email,
-      ministry: insertSubscriber.ministry ?? null, // Convert undefined to null
+      ministry: null, // Ministry field is no longer in the form
       createdAt: currentTimestamp
     };
     
