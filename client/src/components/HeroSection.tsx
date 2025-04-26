@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import jorgePhoto from "../assets/jorhephoto.jpg";
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -205,34 +206,23 @@ const HeroSection = () => {
                   borderColor: "rgba(255, 50, 50, 0.4)"
                 }}
               >
-                <svg 
-                  className="w-full h-full text-white"
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <radialGradient id="profileGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                      <stop offset="0%" stopColor="#330000" />
-                      <stop offset="100%" stopColor="#110000" />
-                    </radialGradient>
-                  </defs>
-                  <rect width="200" height="200" fill="url(#profileGradient)" />
+                <div className="w-full h-full relative">
+                  {/* Profile photo with overlay gradient */}
+                  <img 
+                    src={jorgePhoto} 
+                    alt="Jorge Iraheta" 
+                    className="w-full h-full object-cover"
+                  />
                   
-                  {/* Professional avatar icon */}
-                  <g transform="translate(50, 50) scale(0.5)">
-                    <circle cx="100" cy="70" r="40" fill="#ffffff" />
-                    <path d="M100 150 Q 60 120 60 80 A 40 40 0 0 1 140 80 Q 140 120 100 150 Z" fill="#ffffff" />
-                    <path d="M160 170 Q 130 120 100 150 Q 70 120 40 170 Q 70 190 100 190 Q 130 190 160 170 Z" fill="#ffffff" />
-                  </g>
-                  
-                  <text x="50%" y="160" dominantBaseline="middle" textAnchor="middle" fill="#fff" fontSize="14px" fontFamily="SF Pro Display, sans-serif">
-                    Jorge Iraheta
-                  </text>
-                </svg>
+                  {/* Dark overlay at the bottom for text */}
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center pb-2">
+                    <span className="text-white text-sm font-sf-pro-display">Jorge Iraheta</span>
+                  </div>
+                </div>
                 
                 {/* Add subtle red glow on hover */}
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-b from-red-500/0 via-red-500/0 to-red-500/10"
+                  className="absolute inset-0 bg-gradient-to-b from-red-500/10 via-red-500/0 to-red-500/10 mix-blend-overlay"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                 ></motion.div>
