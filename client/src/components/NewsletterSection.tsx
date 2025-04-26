@@ -8,7 +8,6 @@ import { toast } from "@/hooks/use-toast";
 interface NewsletterFormData {
   name: string;
   email: string;
-  ministry?: string;
 }
 
 const NewsletterSection = () => {
@@ -23,7 +22,6 @@ const NewsletterSection = () => {
     defaultValues: {
       name: "",
       email: "",
-      ministry: "",
     }
   });
 
@@ -127,22 +125,6 @@ const NewsletterSection = () => {
                   placeholder="your@email.com"
                 />
                 {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>}
-              </div>
-              
-              <div>
-                <label htmlFor="ministry" className="block text-sm font-medium mb-2">Ministry/Business Type (Optional)</label>
-                <select 
-                  {...register("ministry")}
-                  id="ministry" 
-                  className="w-full px-4 py-3 rounded-md bg-secondary/5 border border-secondary/20 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent text-secondary"
-                >
-                  <option value="">Select an option</option>
-                  <option value="church">Church Leadership</option>
-                  <option value="nonprofit">Non-Profit</option>
-                  <option value="education">Education</option>
-                  <option value="business">Faith-Based Business</option>
-                  <option value="other">Other</option>
-                </select>
               </div>
               
               <div className="mt-6">
