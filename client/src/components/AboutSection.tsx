@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import jorgePhoto from "../assets/jorhephoto.jpg";
 
 const AboutSection = () => {
   const [ref, inView] = useInView({
@@ -39,32 +40,29 @@ const AboutSection = () => {
           >
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-neutral absolute -bottom-4 -right-4 border border-primary/10"></div>
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden relative z-10 border-2 border-primary/20">
-                <svg 
-                  className="w-full h-full text-primary"
-                  viewBox="0 0 200 200"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <defs>
-                    <linearGradient id="aboutBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#f5f5f7" />
-                      <stop offset="100%" stopColor="#e5e5e7" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="200" height="200" fill="url(#aboutBgGradient)" />
-                  
-                  {/* Professional avatar icon */}
-                  <g transform="translate(50, 45) scale(0.5)">
-                    <circle cx="100" cy="70" r="40" fill="#333" />
-                    <path d="M100 150 Q 60 120 60 80 A 40 40 0 0 1 140 80 Q 140 120 100 150 Z" fill="#333" />
-                    <path d="M160 170 Q 130 120 100 150 Q 70 120 40 170 Q 70 190 100 190 Q 130 190 160 170 Z" fill="#333" />
-                  </g>
-                  
-                  <text x="50%" y="160" dominantBaseline="middle" textAnchor="middle" fill="#111" fontSize="14px" fontFamily="SF Pro Display, sans-serif">
-                    Jorge Iraheta
-                  </text>
-                </svg>
-              </div>
+              <motion.div 
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden relative z-10 border-2 border-primary/20"
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
+                  borderColor: "rgba(0, 122, 255, 0.5)" 
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <img 
+                  src={jorgePhoto} 
+                  alt="Jorge Iraheta" 
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Subtle color treatment overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent mix-blend-overlay"></div>
+                
+                {/* Name overlay at the bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-black/60 to-transparent flex items-end justify-center pb-2">
+                  <span className="text-white text-sm font-sf-pro-display">Jorge Iraheta</span>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
           
